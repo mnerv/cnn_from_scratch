@@ -26,12 +26,11 @@ def evaluate(model, data_loader, device):
             correct += (predicted == labels).sum().item()
     return 100 * correct / total
 
-
 if __name__ == '__main__':
     # Hyperparameters
     batch_size = 32
     num_epochs = 10
-    learning_rate = 1e-3
+    learning_rate = 9.5e-4
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     # seed = 1337
     # torch.manual_seed(seed)
@@ -48,7 +47,7 @@ if __name__ == '__main__':
 
     # Convert to loader
     train_loader = torch.utils.data.DataLoader(train_set, batch_size=batch_size, shuffle=True, num_workers=2)
-    test_loader  = torch.utils.data.DataLoader(train_set, batch_size=batch_size, shuffle=False, num_workers=2);
+    test_loader  = torch.utils.data.DataLoader(test_set, batch_size=batch_size, shuffle=False, num_workers=2)
 
     model = Model().to(device)
 
